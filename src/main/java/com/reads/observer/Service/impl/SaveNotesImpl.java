@@ -1,6 +1,6 @@
-package com.reads.observer.Servide.impl;
+package com.reads.observer.Service.impl;
 
-import com.reads.observer.Servide.SaveNotes;
+import com.reads.observer.Service.SaveNotes;
 
 public class SaveNotesImpl implements SaveNotes {
     @Override

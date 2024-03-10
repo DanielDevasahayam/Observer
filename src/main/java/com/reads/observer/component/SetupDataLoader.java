@@ -1,4 +1,4 @@
-package com.reads.observer.configuration;
+package com.reads.observer.component;
 
 import com.reads.observer.entity.Privilege;
 import com.reads.observer.entity.Roles;
@@ -13,10 +13,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Component
 public class SetupDataLoader implements
@@ -55,11 +52,10 @@ public class SetupDataLoader implements
         Optional<Roles> adminRole = roleRepository.findByName("ROLE_ADMIN");
         if(adminRole.isPresent()) {
             Users user = new Users();
-            user.setFirstName("Test");
-            user.setLastName("Test");
+            user.setName("admin");
             user.setPassword(passwordEncoder.encode("test"));
-            user.setEmail("test@test.com");
-            user.setRoles(Arrays.asList(adminRole.get()));
+            user.setEmail("test@messi.com");
+            user.setRoles(new HashSet<>(Arrays.asList(adminRole.get())));
             user.setEnabled(true);
             userRepository.save(user);
 
@@ -90,7 +86,6 @@ public class SetupDataLoader implements
         if(!records.isPresent())  {
             Roles role = new Roles();
             role.setName(name);
-            role.setPrivileges(privileges);
             roleRepository.save(role);
             return role;
         }
