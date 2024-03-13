@@ -25,6 +25,9 @@ public class SecurityConfiguration {
                     try {
                         authorize
                                 .requestMatchers(HttpMethod.POST, "observer/api/register").hasAnyAuthority("ROLE_ADMIN").and().httpBasic();
+                        authorize
+                                .requestMatchers(HttpMethod.POST, "observer/api/saveNotes").hasAnyAuthority("ROLE_ADMIN").and().httpBasic();
+
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

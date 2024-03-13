@@ -1,16 +1,19 @@
 server:
+  port: 9090
   error:
     include-message: always
     include-binding-errors: always
 
 spring:
+  banner:
+    image:
+      location: classpath:src/main/resources/banner.txt
   security:
     user:
       name: user
       password: password
-
   datasource:
-    password: Daniel@123
+    password: Readyforwork@588
     url: jdbc:postgresql://localhost:5432/observer_registration
     username: postgres
   jpa:
